@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+   <title>Back to the Future</title>
+   <link href="style.css" rel="stylesheet">
+ </head>
+
+ <body>
+     <script src="lib.js"></script>
+
+  <center><img src="https://htstatic.imgsmail.ru/pic_image/d74036093385deba287ade559cdfea89/840/472/1197776/">
+  <H2>Марти! Я получил новые данные, но они неупорядочены, я написал кучу сортировок, проверь меня! Если всё правильно - нажми на кнопку снизу! Не обращай внимание на время, мои часы опять барахлят!</H2></center>
+   <script type="text/javascript">
+
+    function equals(Arr1,Arr2)
+    {
+      if (Arr1.length == Arr2.length)
+      {
+          var ans = true;
+          for (var i =0;i<Arr1.length;i++)
+            { 
+                ans = ans && (Arr1[i]==Arr2[i])
+          }
+      return ans;
+    }
+      else
+      {
+        return false;
+      }
+  }
+
+   	function generateRandomArray(len)
+   	{
+   		var Arr = []
+   		for (var i = 0; i < len; i++) {
+   		Arr.push(Math.round(Math.random() * (1000)));
+
+   	}
+   	return Arr;
+   	}	
+   	var arr = generateRandomArray(5);
+	document.write('<h2><center>Исходный массив: ' + arr.toString() + '</center></h2>');
+
+
+function swap(a,b)
+{
+  var tmp = a;
+  a = b;
+  b = tmp;
+}
+
+
+
+	function InsertionSort(Arr)       
+{           
+    var LocalArray = Arr.slice();
+    var n = LocalArray.length;
+    for (var i = 0; i < n; i++)
+     { var tmp = LocalArray[ i ], j = i-1;
+       while (j >= 0 && LocalArray[j] > tmp)
+        { LocalArray[j+1] = LocalArray[j]; j--; }
+       LocalArray[j+1] = tmp;
+     }                    
+    return LocalArray;
+}
+ 
+function SelectionSort(Arr) {
+   var LocalArray = Arr.slice();
+  var length = LocalArray.length;
+  for (var i = 0; i < length - 1; i++) {
+    var min = i; 
+    for (var j = i + 1; j < length; j++) {
+      if (LocalArray[j] < LocalArray[min]) { 
+        min = j; 
+
+      }
+    }
+    if (min != i) {
+     
+
+      var tmp = LocalArray[i];
+      LocalArray[i] = LocalArray[min];
+      LocalArray[min] = tmp;
+    }
+  }
+
+  return LocalArray;
+}
+
+
+
+
+function MergeSort (Arr) {
+   var LocalArray = Arr.slice();
+  if (LocalArray.length == 1) {
+    return LocalArray;
+  }
+
+  const middle = Math.floor(LocalArray.length / 2) 
+  const left = LocalArray.slice(0, middle) 
+  const right = LocalArray.slice(middle)
+
+  return merge(
+MergeSort(left),
+MergeSort(right)
+  )
+}
+
+function merge (left, right) {
+  let result = []
+  let indexLeft = 0
+  let indexRight = 0
+
+  while (indexLeft < left.length && indexRight < right.length) {
+    if (left[indexLeft] < right[indexRight]) {
+      result.push(left[indexLeft])
+      indexLeft++
+    } else {
+      result.push(right[indexRight])
+      indexRight++
+    }
+  }
+
+  return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight))
+}
+
+
+function BubbleSort(Arr)
+{
+  var LocalArray = Arr.slice();
+  console.log(LocalArray.length)
+  for (var i = 0;i<LocalArray.length;i++)
+  {
+    for (var j =0;j<LocalArray.length-i-1;j++)
+    {
+      if (LocalArray[j]>LocalArray[j+1])
+      {
+
+        var tmp = LocalArray[j];
+        LocalArray[j] = LocalArray[j+1];
+        LocalArray[j+1] = tmp;
+      
+      }
+  }
+}
+
+  return LocalArray;
+}
+
+const SORTING_LIST = [InsertionSort,SelectionSort,MergeSort,BubbleSort,TreeSort,CountingSort,CombSort,Bogosort,BucketSort,ShellSort,QuickSort,HeapSort,RadixSort];
+const NAME_OF_SORTING = ['Insertion sort','Selection sort','Merge sort','Bubble Sort','Tree sort','Counting sort','Comb sort','Bogosort','Bucket sort','Shell Sort','Quick Sort','Heap Sort','Radix Sort']
+var SORTED_ARRAY = arr.slice().sort(function (a, b) {return a - b;})
+
+</script>
+
+  <center> 
+	<script type="text/javascript">
+      document.write('<table><tr><th>Название сортировки</th><th>Отсортированный массив</th><th>Время сортировки<sup>*</sup></th><th>Совпадение со стандартым методом</th></tr>')
+    for (var i = 0; i <SORTING_LIST.length;i++)
+      {
+        document.write('<tr><td>');
+        document.write(NAME_OF_SORTING[i]+'</td><td>');
+        var t0 = performance.now();
+        document.write(SORTING_LIST[i](arr).toString()+'</td><td>');
+        document.write(performance.now()-t0);
+        document.write('</td><td>');
+        if (equals(SORTING_LIST[i](arr),SORTED_ARRAY))
+        {
+          document.write('True</td></tr>');
+        }
+        else
+        {
+          document.write('False</td></tr>');
+        }
+    }
+
+    document.write('</table>');
+</script>
+<button onclick=" return location.href = 'https://media.giphy.com/media/xsF1FSDbjguis/giphy.gif'">
+    <img src="http://www.lumiere-mag.ru/wp-content/uploads/2016/10/back_to_the_future_part1.jpg" width="150" height="50" alt="" style="vertical-align:middle"> 
+   </button>
+</center>
+ </body>
+</html>
