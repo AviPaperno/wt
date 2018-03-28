@@ -1,0 +1,69 @@
+<HTML>
+<HEAD><title>21 квест</title>
+<link href="my.css" rel="stylesheet">
+</HEAD>
+<BODY>
+	  <div class="wrapper">
+    
+    <div id="content" class="content">
+      <input type="button" id="menu-but" class="menu-but" value="НЕ НАЖИМАЙ МЕНЯ">
+      <input type="button" id="module-but" class="module-but" value="УЗНАТЬ ТАЙНУ">
+    </div>
+    
+    <div id="menu" class="sidebar">
+      <img src="https://png.icons8.com/windows/50/000000/cancel.png" id="close-menu" class="close-menu">
+      <br>
+      <a href="#"><h1>Все</h1></a>
+      <hr>
+      <a href="#"><h1>мы</h1></a>
+      <hr>
+      <a href="#"><h1>не</h1></a>
+      <hr>
+      <a href="#"><h1>в</h1></a>
+      <hr>
+      <a href="#"><h1>своём</h1></a>
+      <hr>
+      <a href="#"><h1>уме</h1></a>
+    </div>
+    
+    <div class="modal" id="modal">
+      <div class="modal-content" id="modal-content">
+        <img src="https://png.icons8.com/windows/50/000000/cancel.png" id="close-modal" class="close-modal">
+       <center><img src="https://4.bp.blogspot.com/-TCbVyWx5RUk/WLqRzzaBLlI/AAAAAAAAHdc/S7ZXFs5313If8rH0dfsesKZoig2hKLFUgCLcB/s640/-0yGWJNadrA.jpg"></center>
+      </div>
+    </div>
+  </div>
+<script id="jsbin-javascript">
+var menuBut = document.getElementById('menu-but')
+var menu = document.getElementById('menu')
+var closeMenu = document.getElementById('close-menu')
+var modalBut = document.getElementById('module-but')
+var modal = document.getElementById('modal')
+var modalContent = document.getElementById('modal-content')
+var closeModal = document.getElementById('close-modal')
+
+menuBut.onclick = function(){
+  menu.classList.remove('move-side-back')
+  menu.classList.add('move-side')
+}
+
+closeMenu.onclick = function(){
+  menu.classList.remove('move-side')
+  menu.classList.add('move-side-back')
+}
+
+modalBut.onclick = function() {
+  modal.style.display = "block"
+  modalContent.classList.remove('close-modal')
+  modalContent.classList.add('open-modal')
+}
+
+closeModal.onclick = function() {
+  modal.style.display = "none"
+  modalContent.classList.remove('open-modal')
+  modalContent.classList.add('close-modal')
+}
+</script>
+</body>
+
+</HTML>
